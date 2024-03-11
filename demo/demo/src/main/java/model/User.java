@@ -3,6 +3,7 @@ package model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,4 +13,6 @@ public class User {
     private String email;
     private String password;
 
+    public void setUserID(Long id) {
+    }
 }

@@ -1,4 +1,4 @@
-package com.myprogect.crm.demo;
+package com.myproject.crm.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
