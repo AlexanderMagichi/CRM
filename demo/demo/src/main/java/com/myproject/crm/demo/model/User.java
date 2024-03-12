@@ -1,9 +1,11 @@
 package com.myproject.crm.demo.model;
 
+import lombok.Data;
 import org.springframework.boot.SpringBootConfiguration;
 
 import javax.persistence.*;
 
+@Data
 @SpringBootConfiguration
 @Entity
 @Table(name = "users")
