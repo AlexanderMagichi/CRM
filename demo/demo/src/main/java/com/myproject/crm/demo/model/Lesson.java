@@ -1,4 +1,4 @@
-package model;
+package com.myproject.crm.demo.model;
 
 import javax.persistence.*;
 
@@ -10,10 +10,13 @@ public class Lesson {
     private Long lessonID;
 
     @ManyToOne
-    @JoinColumn(name = "courseID")
+    @JoinColumn(name = "courseID", nullable = false)
     private Course course;
 
+    @Column(name = "lesson_name", nullable = false)
     private String lessonName;
+
+    @Column(name = "lesson_content")
     private String lessonContent;
 
 }
