@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.boot.SpringBootConfiguration;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @SpringBootConfiguration
@@ -25,6 +26,13 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_enrollments",
+            joinColumns = @JoinColumn(name = "userID"),
+            inverseJoinColumns = @JoinColumn(name = "enrollmentID"))
+    private Set<Enrollment> enrollments;
 
 
 }

@@ -1,6 +1,7 @@
 package com.myproject.crm.demo.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "courses")
@@ -14,6 +15,9 @@ public class Course {
 
     @Column(name = "description")
     private String description;
+
+    @ManyToMany(mappedBy = "courses")
+    private Set<Enrollment> enrollments;
 
 
 }
