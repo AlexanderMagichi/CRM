@@ -3,6 +3,7 @@ package com.myproject.crm.demo.controller;
 import com.myproject.crm.demo.model.User;
 import com.myproject.crm.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,10 +24,17 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+//    @GetMapping("/{id}")
+//    public User getUserById(@PathVariable Long id) {
+//        return userService.getUserById(id);
+//    }
+
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
+    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        User user = userService.getUserById(id);
+        return user != null ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
     }
+
 
     @PostMapping
     public User createUser(@RequestBody User user) {

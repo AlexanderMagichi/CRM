@@ -3,7 +3,9 @@ package com.myproject.crm.demo.service;
 import com.myproject.crm.demo.model.Enrollment;
 import com.myproject.crm.demo.repositories.EnrollmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -22,7 +24,10 @@ public class EnrollmentService {
     }
 
     public Enrollment getEnrollmentById(Long id) {
-        return enrollmentRepository.findById(id).orElse(null);
+        return enrollmentRepository.findById(id)
+                .orElseThrow(() -> {
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Enrollment not found with id: " + id);
+                });
     }
 
     public Enrollment createEnrollment(Enrollment enrollment) {

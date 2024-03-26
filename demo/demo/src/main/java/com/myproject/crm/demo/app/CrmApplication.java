@@ -1,4 +1,4 @@
-package com.myproject.crm.demo;
+package com.myproject.crm.demo.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 
 @ComponentScan
-@SpringBootApplication(scanBasePackages = {"your.base.package", "com/myproject/crm/demo/repositories"})
+@SpringBootApplication
 
 public class CrmApplication {
 

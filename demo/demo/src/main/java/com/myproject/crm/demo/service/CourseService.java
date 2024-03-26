@@ -3,7 +3,9 @@ package com.myproject.crm.demo.service;
 import com.myproject.crm.demo.model.Course;
 import com.myproject.crm.demo.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -22,7 +24,10 @@ public class CourseService {
     }
 
     public Course getCourseById(Long id) {
-        return courseRepository.findById(id).orElse(null);
+        return courseRepository.findById(id)
+                .orElseThrow(() -> {
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Course not found with id: " + id);
+                });
     }
 
     public Course createCourse(Course course) {
